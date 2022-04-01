@@ -16,7 +16,7 @@ if getgenv().AutoChat.PrivateChat == true then
         if v ~= PlayersName.LocalPlayer.Name then
             if getgenv().AutoChat.Message ~= "" then
                 local PrivateChatArgument = {
-                    [1] = "/w "..v.." "..Message;
+                    [1] = "/w "..v.." "..getgenv().AutoChat.Message;
                     [2] = "All"
                 }
                 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(PrivateChatArgument))
@@ -32,7 +32,7 @@ if getgenv().AutoChat.PrivateChat == true then
 else
     if getgenv().AutoChat.Message ~= "" then
         local GlobalChatArgument = {
-                    [1] = Message;
+                    [1] = getgenv().AutoChat.Message;
                     [2] = "All"
                 }
         game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(GlobalChatArgument))
