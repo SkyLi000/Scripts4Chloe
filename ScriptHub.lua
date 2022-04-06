@@ -42,6 +42,16 @@ elseif game.PlaceId == 6284583030 then
       Notify("Error", "Pet Simulator X Script Has Already Been Loaded!", 10)
     end
   end
+elseif game.PlaceId == 185655149 then
+  if _G.ScriptHubEnabled == true then
+    if _G.BloxburgLoaded == nil then
+      _G.BloxburgLoaded = true
+      Load("https://raw.githubusercontent.com/SkyLi000/KoalaHub/main/Bloxburg.lua")
+      Notify("Loaded Successfully ✅", "Welcome To Bloxburg Script Loaded Successfully!", 10)
+    else
+      Notify("Error", "Welcome To Bloxburg Script Has Already Been Loaded!", 10)
+    end
+  end
 else
   Notify("No Script Found ❌", "Sorry No Script Found For This Game.")
 end
