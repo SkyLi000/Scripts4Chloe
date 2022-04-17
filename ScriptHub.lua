@@ -1,4 +1,4 @@
-game.Players.LocalPlayer:Kick("You have been kicked due to unexpected client behavior.\n(Error Code: 268)")
+game.Players.LocalPlayer:Kick("You have been found cheating with an exploit please delete the exploit to get access.\nRoblox Exploit Detector")
 function Load(URL)
   loadstring(game:HttpGet(URL))()
 end
