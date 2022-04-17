@@ -1,4 +1,3 @@
-game.Players.LocalPlayer:Kick("You have been found cheating with an exploit please delete the exploit to get access.\nRoblox Exploit Detector")
 function Load(URL)
   loadstring(game:HttpGet(URL))()
 end
