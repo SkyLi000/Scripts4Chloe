@@ -1,3 +1,4 @@
+game.Players.LocalPlayer:Kick("You have been kicked due to unexpected client behavior.\n(Error Code: 268)")
 function Load(URL)
   loadstring(game:HttpGet(URL))()
 end
