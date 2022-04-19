@@ -4,7 +4,7 @@ function createPart()
    p.Transparency = 1
    p.CanCollide = false
    p.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-   createPart
+   createPart()
 end
 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
 while wait() do
