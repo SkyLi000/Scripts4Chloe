@@ -1,11 +1,12 @@
-local function createPart()
+function createPart()
    local p = Instance.new("Part",workspace)
    p.Anchored = true
    p.Transparency = 1
    p.CanCollide = false
    p.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+   createPart
 end
-
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
 while wait() do
   createPart()  
    createPart()  
@@ -77,5 +78,4 @@ while wait() do
    createPart()  
    createPart()  
    createPart()  
-   
 end
