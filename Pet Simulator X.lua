@@ -1,6 +1,6 @@
-local scriptVer = "3.87"
-local saveFileVer = "1.43"
-local saveFileName = "KoalaHub.psx"
+local scriptVer = "1.0"
+local saveFileVer = "2.0"
+gameLoadTime = tick()
 
 if not game:IsLoaded() then
     game.Loaded:Wait()
@@ -13,9 +13,6 @@ local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local Notify = getsenv(game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("Admin Commands"):WaitForChild("Admin Cmds Client")).AddNotification
 
-gameLoadTime = tick()
-
-wait(math.random(4.2834781293, 10.84372934789234812))
 
 allConnected = {}
 
@@ -75,7 +72,7 @@ getgenv().settings = {
         dmAutoClaim = false,
         dmEnabled = false,
         dmMythicals = false,
-        selectedEnchants = {},
+        selectedEnchants = {}
     },
     colection = {
         trippleHatch = false,
@@ -83,18 +80,10 @@ getgenv().settings = {
         ignoreRainbow = false,
         ignoreGold = false,
         ignoreNormal = false,
-        ignoreMythicals = false,
+        ignoreMythicals = false
     },
     guis = {
-        keycodes = {
-            ["Rainbow Machine"] = "R",
-            ["Dark Matter Machine"] = "T",
-            ["Gold Machine"] = "G", ["Fuse Machine"] = "F",
-            ["Pet Collection"] = "P",
-            ["Merchant"] = "M", 
-            ["Bank"] = "B",
-            ["Enchant"] = "E"
-        }
+        keycodes = {}
     }
 }
 local tempSettings
@@ -146,14 +135,14 @@ end
 
 local function loadSettings()
     if(isfile and readfile) then
-        if(isfile(saveFileName)) then
-            data = HttpService:JSONDecode(readfile(saveFileName))
+        if(isfile("KoalaHub/PSX.json")) then
+            data = HttpService:JSONDecode(readfile("KoalaHub/PSX.json"))
             recurseTable(data)
             Lib.Signal.Fire("Notification", "Loaded Data From Save File", {
                 color = Color3.fromRGB(104, 244, 104)
             })
             if not (data["saveVersion"] == getgenv().settings["saveVersion"]) then
-                writefile(saveFileName, (HttpService:JSONEncode(getgenv().settings)))
+                writefile("KoalaHub/PSX.json", (HttpService:JSONEncode(getgenv().settings)))
                 Lib.Signal.Fire("Notification", "Migrated Save File To Newer Version", {
                     color = Color3.fromRGB(104, 244, 104)
                 })
@@ -170,7 +159,7 @@ end
 
 local function saveSettings()
     if(writefile and isfile) then
-        writefile(saveFileName, (HttpService:JSONEncode(getgenv().settings)))
+        writefile("KoalaHub/PSX.json", (HttpService:JSONEncode(getgenv().settings)))
         Lib.Signal.Fire("Notification", "Successfully Saved Data", {
             color = Color3.fromRGB(104, 244, 104)
         })
@@ -179,8 +168,8 @@ end
 
 local function deleteSettings()
     if(isfile and delfile) then
-        if(isfile(saveFileName)) then
-            delfile(saveFileName)
+        if(isfile("KoalaHub/PSX.json")) then
+            delfile("KoalaHub/PSX.json")
             Lib.Signal.Fire("Notification", "Successfully Deleted Save File", {
                 color = Color3.fromRGB(104, 244, 104)
             })
@@ -405,10 +394,10 @@ end
 
 
 --UI Lib
-function LoadUI()
+function createUILibrary()
     --Start Functions
-    local UILib = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/PetSimXScripts/main/Library.lua"))()
-    local UILib = UILib.CreateWindow("Pet Sim X", (scriptVer))
+    local UILib = loadstring(game:HttpGet("https://raw.githubusercontent.com/FREEHugeGames/Roblox/main/UILib.lua"))()
+    local UILib = UILib.CreateWindow("Huge Games", (scriptVer))
 
     --Tabs
     local TabEst = UILib:Tab("Essentials")
@@ -417,7 +406,7 @@ function LoadUI()
     local TabMachine = UILib:Tab("Machines")
     local TabGUIs = UILib:Tab("GUIs")
     local TabOther = UILib:Tab("Other")
-    local TabFree = UILib:Tab("Premium")
+    local TabFree = UILib:Tab("FREE Premium")
     local TabPets = TabFree:Section("Pets")
     --Other
     local ScriptSection = TabOther:Section("Script")
@@ -446,6 +435,7 @@ function LoadUI()
     end)
 
     --Essentials
+    local discordSection = TabEst:Section("Discord")
     local gameSection = TabEst:Section("Game")
     local redeemSection = TabEst:Section("Auto Use/Redeem")
     local merchantSection = TabEst:Section("Merchant")
@@ -453,6 +443,13 @@ function LoadUI()
     local SpoofingSection = TabEst:Section("Spoofing")
     local UIEnhancementsSection = TabEst:Section("UI Enhancements")
 
+    discordSection:Label("discord.gg/")
+    discordSection:Button("Copy Invite Link", function()
+        setclipboard("discord.gg/")
+    end)
+    discordSection:Label("==] Credits [==")
+    discordSection:Label("Somebody Made This")
+ 
   
     local SectionSpoof = TabFree:Section("Spoofing")
     local SectionDiscordStat = TabFree:Section("Discord Stats")
@@ -471,7 +468,7 @@ function LoadUI()
             if not getgenv().mode then
                 getgenv().mode = 1
             end
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/PetSimXScripts/main/MerchantHop"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FREEHugeGames/Roblox/main/MerchantHop.lua"))()
         end)
 
         SectionPetTeams:TextBox("Team Name", "Team Name")
@@ -548,6 +545,21 @@ function LoadUI()
                 Lib.Message.New("Your Twitter Name Is @"..Lib.Save.Get().TwitterUsername)
             else
                 Lib.Message.New("You Or The User You Spoofed Isn't Verified Through Twitter")
+            end
+        end)
+
+
+        SectionDiscordStat:TextBox("Discord Id", "", function(id)
+            getgenv().discordId = id
+        end)
+        SectionDiscordStat:Toggle("(TEMPORARILY DISABLED", false, function(isToggled)
+            if isToggled then
+                getgenv().sendReq = true
+                spawn(function()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/FREEHugeGames/Roblox/main/DiscordStatsAPI.lua"))()
+                end) 
+            else
+                getgenv().sendReq = false
             end
         end)
 
@@ -873,6 +885,12 @@ function LoadUI()
         end
     end)
 
+    
+    --Bypass Hacker Portal Quests
+    gameSection:Button("Bypass Hacker Portal Quests",function()
+         print("Hacker Portal Opened")
+    end)
+
    
     --Unlock Gamepasses
     gameSection:Toggle("Unlock Teleport And Super Magnet", getgenv().settings.game.unlockGamepasses, function(isToggled)
@@ -938,7 +956,7 @@ function LoadUI()
         getgenv().settings.game.statTrackers = isToggled
         if isToggled then
             if not enabledBefore then
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/KoalaHub/main/StatsTracker.lua"))()
+                loadstring(game:HttpGet("https://pastebin.com/raw/iNK4LkjQ"))()
                 enabledBefore = true
             else
                 menus = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("Main"):WaitForChild("Right")
@@ -973,8 +991,17 @@ function LoadUI()
         end
     end)
 
+    --Spoofing
+        SpoofingSection:Label("Only *YOU* See This, Use If Screensharing")
+        SpoofingSection:Toggle("Spoof Chat Messages")
+
     --UI Enhancements
-        UIEnhancementsSection:Label("Comming Soon!")
+        UIEnhancementsSection:Label("Allows For better searching within inventory")
+        UIEnhancementsSection:Label("Example: TC will show all pets with Tech Coins")
+        UIEnhancementsSection:Label("]- Credits To Gerard, Stole This Idea From Him -[")
+        UIEnhancementsSection:Button("Advanced Search",function()
+        print("Advanced Search Active")
+        end)
 
     --Farming
     local mainFarmingSection = TabFarming:Section("Main")
@@ -1584,6 +1611,10 @@ function LoadUI()
         end
     end)
 
+    RainbowSection:DropDown(getgenv().settings.machines.rainbowString, {"1 Pet, 13%", "2 Pets, 29%", "3 Pets, 47%", "4 Pets, 63%", "5 Pets, 88%", "6 Pets, 100%"}, function(option)
+        getgenv().settings.machines.rainbowAmount = (tonumber(option:split(" ")[1]))
+        getgenv().settings.machines.rainbowString = option
+    end)
 
     --Collection
     ColletionSection:Label("Settings")
@@ -2090,4 +2121,4 @@ function LoadUI()
 
 end
 
-LoadUI()
+createUILibrary()
