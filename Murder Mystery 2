@@ -19,6 +19,8 @@ if game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("PlayerList
 end
 
 if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VALID == true then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+	print("Teleported...")
 	local HttpService = game:GetService("HttpService")
 	local FileName = "MurderMystery2.json"
 	_G.Visible = true
@@ -27,9 +29,9 @@ if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VAL
 		print("Loading Visible...")
 		if (readfile and isfile and isfile(FileName)) then
 			_G.Visible = HttpService:JSONDecode(readfile(FileName))
-			print(tostring(_G.Visible).." | Loaded")
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+			print("Teleported...")
 		end
-		print("Loaded!")
 	end
 
 	function SaveSettings()
@@ -38,7 +40,8 @@ if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VAL
 		if (writefile) then
 			json = HttpService:JSONEncode(_G.Visible)
 			writefile(FileName, json)
-			print(tostring(_G.Visible).." | Saved")
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+			print("Teleported...")
 		end
 	end
 
@@ -176,23 +179,17 @@ if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VAL
 			local Character = v.Character or v.CharacterAdded:Wait()
 			if v:WaitForChild("Backpack"):FindFirstChild("Gun") then
 				Sheriff_Name.Text = v.Name
-        Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
-				print("Teleported...")
 			elseif Character:FindFirstChild("Gun") then
 				Sheriff_Name.Text = v.Name
-        Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
-				print("Teleported...")
 			elseif v:WaitForChild("Backpack"):FindFirstChild("Knife") then
 				Murder_Name.Text = v.Name
-        Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
-				print("Teleported...")
 			elseif Character:FindFirstChild("Knife") then
 				Murder_Name.Text = v.Name
-        Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
-				print("Teleported...")
 			end
 		end
 		wait(5)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+		print("Teleported...")
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/TestScript/main/MM2_4_CHLOE"))()
 	end
 end
