@@ -1,13 +1,10 @@
 _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VALID = false
 
 if game.Players.LocalPlayer.UserId == 2848337403 or 1808875272 or 3101174025 then
-	print("Access Granted - "..game.Players.LocalPlayer.UserId.." | "..game.Players.LocalPlayer.Name)
 	_G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VALID = true
 elseif game.Players.LocalPlayer.UserId == 1808875272 then
-	print("Access Granted - "..game.Players.LocalPlayer.UserId.." | "..game.Players.LocalPlayer.Name)
 	_G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VALID = true
 elseif game.Players.LocalPlayer.UserId == 3101174025 then
-	print("Access Granted - "..game.Players.LocalPlayer.UserId.." | "..game.Players.LocalPlayer.Name)
 	_G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VALID = true
 else
 	game.Players.LocalPlayer:Kick("Sorry this script is only for Sky & Chloe. Ask Chloe to tell Sky for access thank you.")
@@ -180,15 +177,19 @@ if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VAL
 			if v:WaitForChild("Backpack"):FindFirstChild("Gun") then
 				Sheriff_Name.Text = v.Name
         Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+				print("Teleported...")
 			elseif Character:FindFirstChild("Gun") then
 				Sheriff_Name.Text = v.Name
         Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+				print("Teleported...")
 			elseif v:WaitForChild("Backpack"):FindFirstChild("Knife") then
 				Murder_Name.Text = v.Name
         Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+				print("Teleported...")
 			elseif Character:FindFirstChild("Knife") then
 				Murder_Name.Text = v.Name
         Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+				print("Teleported...")
 			end
 		end
 		wait(5)
