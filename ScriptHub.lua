@@ -1,3 +1,5 @@
+_G.ScriptHubEnabled = true
+
 function Load(URL)
   loadstring(game:HttpGet(URL))()
 end
