@@ -2,14 +2,6 @@ function Load(URL)
   loadstring(game:HttpGet(URL))()
 end
 
-function TrollChat(Text)
-  local Chat = {
-    [1] = Text
-    [2] = "All"
-                }
-  game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(Chat))  
-end
-
 function Notify(Title, Message, Duration)
   local CoreGui = game:GetService("StarterGui")
 
@@ -21,10 +13,6 @@ function Notify(Title, Message, Duration)
 end
 
 Notify("Loading", "Script Hub Loading Trying To Connect To Server.", 10)
-TrollChat("Thank you for using RoLoc Script Hub")
-TrollChat("Loading Script Hub...")
-TrollChat("Script Hub Loaded; Detected Game ID: "..game.PlaceId)
-TrollChat("Enjoy")
 
 if game.PlaceId == 142823291 then
   if _G.ScriptHubEnabled == true then
