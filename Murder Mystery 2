@@ -19,8 +19,10 @@ if game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("PlayerList
 end
 
 if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VALID == true then
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
-	print("Teleported...")
+	if _G.SkyIsNotWeird == false then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+		print("Teleported...")
+	end
 	local HttpService = game:GetService("HttpService")
 	local FileName = "MurderMystery2.json"
 	_G.Visible = true
@@ -29,8 +31,10 @@ if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VAL
 		print("Loading Visible...")
 		if (readfile and isfile and isfile(FileName)) then
 			_G.Visible = HttpService:JSONDecode(readfile(FileName))
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
-			print("Teleported...")
+			if _G.SkyIsNotWeird == false then
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+				print("Teleported...")
+			end
 		end
 	end
 
@@ -40,8 +44,10 @@ if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VAL
 		if (writefile) then
 			json = HttpService:JSONEncode(_G.Visible)
 			writefile(FileName, json)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
-			print("Teleported...")
+			if _G.SkyIsNotWeird == false then
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+				print("Teleported...")
+			end
 		end
 	end
 
@@ -188,8 +194,10 @@ if game.PlaceId == 142823291 and _G.MM2_CHLOE__SHOW__MnSPLRUI_ACCESS_GRANTED_VAL
 			end
 		end
 		wait(5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
-		print("Teleported...")
+		if _G.SkyIsNotWeird == false then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.94693, 150.228455, 22.6144009, 0.99122566, 6.65538238e-08, 0.132180631, -6.46315712e-08, 1, -1.88329725e-08, -0.132180631, 1.01246833e-08, 0.99122566)
+			print("Teleported...")
+		end
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/TestScript/main/MM2_4_CHLOE"))()
 	end
 end
